@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Никому не нужная хреновиная</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="global.css">
+</head>
+<body>
+	<div id="main-controls ">
+		<div class="tb-wrap table">
+			<table border="2" id="tb-control">
+		   <tr>
+		    <th></th>
+		    <th><input type="button" id="control-up" value="Up" onclick="player.move_up()"></th>
+		    <th id="write-place-cord"></th><!-- Коордианты -->
+		   </tr>
+		      <tr>
+		    <th><input type="button" id="control-left" value="Left" onclick="player.move_left()"></th>
+		    <th id="display-loc">Локация: <div id="write-place-loc"></div></th>
+		    <th><input type="button" id="control-right" value="Right" onclick="player.move_right()"></th>
+		   </tr>
+		      <tr>
+		    <th></th>
+		    <th><input type="button" id="control-down" value="Down" onclick="player.move_down()"></th>
+		    <th></th>
+		   </tr>
+		   <tr>
+		   	<th id="write-place-not" colspan="3"> </th>
+		   </tr>
+		 </table>
+	 </div>
+	 <div id="write-place-loc"></div>
+<div class="abilitys-block">
+	Навыки:
+	<ul>
+		<li><input type="button" value="Телепорт на метку"></li>
+		<li><input type="button" value="Cоздать метку"></li>
+	</ul>
+</div>
+	</div>
+ 		
+
+*Откройте консоль для более подробной информации
+</body>
+	<script type="text/javascript" src="functions.js"></script>
+	<script type="text/javascript" src="locations.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+	<script type="text/javascript" src="player.js"></script>
+</html>
