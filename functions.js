@@ -14,28 +14,42 @@ function matrixArray(rows,columns){
 }
 //Интерфейс
 function update(){
-	document.getElementById('write-place-cord').innerHTML = '['+player.loc_x+';'+player.loc_y+']';//Location cord.
-	document.getElementById('write-place-loc').innerHTML = locs[player.loc_x][player.loc_y];//Location name
+var tim = new Date();
+
+	document.getElementById('write-place-cord').innerHTML = '['+player.coordinates.loc_x+';'+player.coordinates.loc_y+']';//Location cord.
+	document.getElementById('write-place-loc').innerHTML = locs[player.coordinates.loc_x][player.coordinates.loc_y];//Location name
+	document.getElementById('write-place-time').innerHTML = tim.getHours()+':'+tim.getMinutes()+':'+tim.getSeconds();//time
 };
 //Сохранение
 function savetoLS(){
 	localStorage['player'] = JSON.stringify(player);
 };
-//Обновлнние logging
-function update_l(){
-	document.getElementById('logging').innerHTML = JSON.stringify(player);
+
+
+//chat
+function notific2(msg){
+	var tim = new Date();
+	time=tim.getHours()+':'+tim.getMinutes();
+	document.getElementById('notific').innerHTML =document.getElementById('notific').innerHTML+"<div class='msg_div_content'>"+"["+time+"] "+msg+"</div>";
+	var msg2 =document.querySelectorAll('#notific .msg_div_content');
+	if (msg2.length>30) {
+		msg2[length].parentNode.removeChild(msg2[0]);
+	}
+	document.getElementById('notific').scrollTop= 1000;
 };
-//Обновлнние logging
-function notific(msg){
-	document.getElementById('write-place-not').innerHTML = msg;
-};
+
+function chat_clear(){
+	var msg2 =document.querySelectorAll('#notific .msg_div_content')
+	for (var i = msg2.length - 1; i >= 0; i--) {
+		msg2[length].parentNode.removeChild(msg2[i]);
+	}
+
+}
+
+
 //Safve-deleter
 function save_del(msg){
 	localStorage.clear();
 	document.location.reload();
 };
-//Обновление с интервалом в 1 с.
-var timerID = setInterval(function(){
-	update();
-	savetoLS();
-})
+

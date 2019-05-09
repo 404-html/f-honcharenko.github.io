@@ -10,7 +10,7 @@
 		<div class="tb-wrap table">
 			<table border="2" id="tb-control">
 		   <tr>
-		    <th></th>
+		    <th id="write-place-time"></th>
 		    <th><input type="button" id="control-up" value="Up" onclick="player.move_up()"></th>
 		    <th id="write-place-cord"></th><!-- Коордианты -->
 		   </tr>
@@ -38,6 +38,8 @@
 	</ul>
 </div>
 	</div>
+	<div id="notific"></div>
+	<input type="button" class="chat_cleat" value="Chat clear" onclick="chat_clear()">
  		
 
 *Откройте консоль для более подробной информации
@@ -46,4 +48,6 @@
 	<script type="text/javascript" src="locations.js"></script>
 	<script type="text/javascript" src="main.js"></script>
 	<script type="text/javascript" src="player.js"></script>
+	<script type="text/javascript" src="update.js"></script>
+
 </html>
