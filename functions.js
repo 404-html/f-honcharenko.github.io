@@ -24,7 +24,7 @@ function update(){
 function point_writer(){
 	var points = new Array();
 	for (var key in player.spec) {
-		points[key.id] = ((player.spec[key].name_ru+": "+player.spec[key].value)+"<br/>");
+		points[player.spec[key].id] = ((player.spec[key].name_ru+": "+player.spec[key].value));
 	}
 	return points
 }
