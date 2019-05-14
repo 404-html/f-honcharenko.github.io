@@ -23,7 +23,7 @@ try {
 		inventory:{
 				name_ru: "Инвентарь",
 				name_en: "Inventory",
-				// capacity:  player.spec.const.value*2
+				capacity:  0
 			},
     coordinates:{
         loc_x: 5,
@@ -31,6 +31,7 @@ try {
     		loc_z: 0
     }
 };
+
 	console.log("	С: Сохарение не найдено. Сгенерированны базовые значения координат.");
 	notific2("	С: Сохарение не найдено. Сгенерированны базовые значения координат.");
 }

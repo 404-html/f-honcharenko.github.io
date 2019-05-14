@@ -15,12 +15,30 @@ function matrixArray(rows,columns){
 //Интерфейс
 function update(){
 	var tim = new Date();
-	// document.getElementById('points-keys-writer').innerHTML = '['+player.coordinates.loc_x+';'+player.coordinates.loc_y+']';//Location cord.
+		document.getElementById('points-keys-writer').innerHTML = point_write_html();
 	document.getElementById('write-place-cord').innerHTML = '['+player.coordinates.loc_x+';'+player.coordinates.loc_y+']';//Location cord.
 	document.getElementById('write-place-loc').innerHTML = locs[player.coordinates.loc_x][player.coordinates.loc_y];//Location name
 	document.getElementById('write-place-time').innerHTML = tim.getHours()+':'+tim.getMinutes()+':'+tim.getSeconds();//time
+	document.getElementById('inv-writer').innerHTML = 'Invetory ('+player.inventory.capacity+' доступно)';//time
+
 };
-//хар-ки
+//har-ki in html
+function point_write_html(){
+	var arr = point_writer();
+	var arr2 = new Array();
+	// console.log(arr);
+	document.getElementById('points-keys-writer-dis').innerHTM = "1";
+	for (var i = 1; i <= arr.length-1; i++) {
+		// console.log(i);
+		arr2[i] = document.getElementById('points-keys-writer-dis').innerHTML + arr[i]+"<br/>";
+		// console.log(arr2);
+		
+	}
+
+	return arr2;
+}
+
+//хар-ки in array
 function point_writer(){
 	var points = new Array();
 	for (var key in player.spec) {
@@ -47,13 +65,16 @@ function point_num(id){
 //point_levelup
 function point_up(id, number){
 	player.spec[id].value = player.spec[id].value+number; 
-	return player.spec[id].value;
+	return player.spec[id].name_ru+": "+player.spec[id].value;
 }
 //Сохранение
 function savetoLS(){
 	localStorage['player'] = JSON.stringify(player);
 };
-
+//
+function update_sub_point(){
+	player.inventory.capacity = player.spec.const.value*2;
+}
 
 //chat
 function notific2(msg){
@@ -75,7 +96,9 @@ function chat_clear(){
 };
 //Save-deleter
 function save_del(msg){
+	update_value = false;
 	localStorage.clear();
 	document.location.reload();
+	update_value = true;
 };
 
