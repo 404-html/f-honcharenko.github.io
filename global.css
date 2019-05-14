@@ -29,3 +29,11 @@ table{
 	overflow-y: auto;
 	word-wrap: break-word;
 }
+#points-keys-writer{
+	width: 100px;
+	height: 200px;
+	border: 2px double black ;
+	background-color: blue;
+	overflow-y: auto;
+	word-wrap: break-word;
+}

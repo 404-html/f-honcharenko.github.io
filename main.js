@@ -7,13 +7,24 @@ try {
 } catch(e){
 	var player = {
 		spec:{
-			Constitution:{
+			const:{
 				id: 1,
 				name_ru: "Телосложение",
 				name_en: "Constitution",
 				value: 0
 			},
+			int:{
+				id: 2,
+				name_ru: "Интелект",
+				name_en: "intelect",
+				value: 0
+			},
 		},
+		inventory:{
+				name_ru: "Инвентарь",
+				name_en: "Inventory",
+				// capacity:  player.spec.const.value*2
+			},
     coordinates:{
         loc_x: 5,
     		loc_y: 5,
@@ -25,5 +36,5 @@ try {
 }
 console.log("	С: Ваши координаты: Х: "+player.coordinates.loc_x+" Y: "+player.coordinates.loc_y)
 notific2("	С: Ваши координаты: Х: "+player.coordinates.loc_x+" Y: "+player.coordinates.loc_y)
-
+// player.inventory.capacity = player.spec.constitut.value*2;
 // alert('Текущие время'+tim.getHours()+':'+tim.getMinutes()+':'+tim.getSeconds());
