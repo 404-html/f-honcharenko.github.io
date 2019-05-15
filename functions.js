@@ -12,6 +12,11 @@ function update(){
 	document.getElementById('inv-writer').innerHTML = 'Inventory ('+keyslength(player.inventory.contain)+' тип(ов),'+all_item_count()+' предмет(ов))';//inventory_btn
 	document.getElementById('inv-block').innerHTML = write_items();//inventory_content
 	document.getElementById('char-block').innerHTML = write_charac();//charac_content
+	// document.getElementById('loc-items-block').innerHTML = write_loc_items();//location-invetnory content
+
+};
+function update2(){
+	document.getElementById('loc-items-block').innerHTML = write_loc_items();//location-invetnory content
 
 };
 //write-charac
@@ -23,6 +28,37 @@ function write_charac(){
 		}
 		return _item;
 }
+//write items in location
+function write_loc_items(){
+		var _item = "";
+		// var _btn_get = "<input type='button' onclick='get_loc_item(1)' value='get it'";
+		var _btn_get = "<u onclick='get_loc_item(1)'>get it</u>";
+		// console.log(_btn_get);
+		for (var i in locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]].items) {	
+			_item = _item+"<div class='_item'>" + bd_items[i].name +'('+locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]].items[i]+') '+_btn_get+"</div>";}
+
+		return _item;
+}
+function upd_inv_loc_null_check(){
+	for (var i in locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]].items) {
+			if (locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]].items[i]<1	) {
+				delete locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]].items[i];
+				console.log('Location Item deleted');
+			}
+	}
+}
+//get-loc-item-o-inv-player
+function get_loc_item(_id,_count=1){
+	if (_count<1) {_count=0}//взять отрицательно кол-во предметов
+	if (locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]].items[_id]>=_count) {
+		try{
+				locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]].items[_id]=locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]].items[_id]-_count;
+				inv_add(_id,_count);
+		} catch(err){
+
+		}
+	}else{console.log('Недостаточное кол-во предметов');}
+};
 //untined-free
 function free_unt(_item){
 	if (_item == undefined){

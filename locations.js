@@ -10,7 +10,7 @@ function matrixArray(rows,columns){
     arr[i] = new Array();
     for(var j=0; j<columns; j++){
     	var index = 0;
-      arr[i][j] = "Неизведанный лес";
+      // arr[i][j] = "Неизведанный лес";
       // locations[[i]+":"+[j]] = {
       // 	id: index,
       // 	name:"null"
@@ -20,6 +20,7 @@ function matrixArray(rows,columns){
     	  locations[[i]+":"+[j]]["name"]="null location";
     	  locations[[i]+":"+[j]]["loc_x"]=i;
     	  locations[[i]+":"+[j]]["loc_y"]=j;
+    	  locations[[i]+":"+[j]]["items"]={};
 
     	index++;
 
@@ -33,7 +34,20 @@ locations["4:5"].name = "Долина";
 locations["4:6"].name = "Долина";
 locations["5:4"].name = "Долина";
 locations["5:5"].name = "Стартовая локация";
+
 locations["5:6"].name = "Долина";
 locations["6:4"].name = "Долина";
 locations["6:5"].name = "Долина";
 locations["6:6"].name = "Долина";
+
+//add item to lcoation
+function loc_itm_add(_id,_count=1,_x=player.coordinates.loc_x,_y=player.coordinates.loc_y){
+	if (_id in bd_items) {
+		if (locations[[_x]+":"+[_y]].items[_id] == null){
+			locations[[_x]+":"+[_y]].items[_id] = _count;
+		} else{
+			locations[[_x]+":"+[_y]].items[_id] =locations[[_x]+":"+[_y]].items[_id]+ _count;
+		}
+	} else {console.log('Предмет не существует');}
+	return ;
+}
