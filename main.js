@@ -1,5 +1,6 @@
 ﻿console.log("	С: Инициализация main-файла.");
 var player = Object.create(null);
+var locations = Object.create(null);
 try {
 	player = JSON.parse(localStorage['player']);
 	console.log("	С: Сохарение успешно загружено");
@@ -15,7 +16,7 @@ try {
 			},
 			int:{
 				id: 2,
-				name_ru: "Интелект",
+				name_ru: "Интеллект",
 				name_en: "intelect",
 				value: 0
 			},
@@ -23,14 +24,18 @@ try {
 		inventory:{
 				name_ru: "Инвентарь",
 				name_en: "Inventory",
-				capacity:  0
+				capacity:  0,
+				contain: null
 			},
     coordinates:{
         loc_x: 5,
     		loc_y: 5,
-    		loc_z: 0
+    		loc_z: 0,
+    		loc_id: 61
+
     }
 };
+var locations = {};
 
 	console.log("	С: Сохарение не найдено. Сгенерированны базовые значения координат.");
 	notific2("	С: Сохарение не найдено. Сгенерированны базовые значения координат.");

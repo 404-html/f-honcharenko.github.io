@@ -1,23 +1,13 @@
 console.log("	С: Инициализация файла функций.");
 
 
-//Генерация 2-Д массива
-function matrixArray(rows,columns){
-  var arr = new Array();
-  for(var i=0; i<rows; i++){
-    arr[i] = new Array();
-    for(var j=0; j<columns; j++){
-      arr[i][j] = "Неизведанный лес";
-    }
-  }
-  return arr;
-}
+
 //Интерфейс
 function update(){
 	var tim = new Date();
 		document.getElementById('points-keys-writer').innerHTML = point_write_html();
 	document.getElementById('write-place-cord').innerHTML = '['+player.coordinates.loc_x+';'+player.coordinates.loc_y+']';//Location cord.
-	document.getElementById('write-place-loc').innerHTML = locs[player.coordinates.loc_x][player.coordinates.loc_y];//Location name
+	document.getElementById('write-place-loc').innerHTML =locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]].name;//Location name
 	document.getElementById('write-place-time').innerHTML = tim.getHours()+':'+tim.getMinutes()+':'+tim.getSeconds();//time
 	document.getElementById('inv-writer').innerHTML = 'Invetory ('+player.inventory.capacity+' доступно)';//time
 
@@ -32,9 +22,7 @@ function point_write_html(){
 		// console.log(i);
 		arr2[i] = document.getElementById('points-keys-writer-dis').innerHTML + arr[i]+"<br/>";
 		// console.log(arr2);
-		
 	}
-
 	return arr2;
 }
 
@@ -73,7 +61,8 @@ function savetoLS(){
 };
 //
 function update_sub_point(){
-	player.inventory.capacity = player.spec.const.value*2;
+	player.inventory.capacity = player.spec.const.value*2.5;
+	player.coordinates.loc_id=locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]]["id"]
 }
 
 //chat
@@ -100,5 +89,4 @@ function save_del(msg){
 	localStorage.clear();
 	document.location.reload();
 	update_value = true;
-};
-
+}
