@@ -5,13 +5,40 @@ console.log("	С: Инициализация файла функций.");
 //Интерфейс
 function update(){
 	var tim = new Date();
-		document.getElementById('points-keys-writer').innerHTML = point_write_html();
+		// document.getElementById('points-keys-writer').innerHTML = point_write_html();
 	document.getElementById('write-place-cord').innerHTML = '['+player.coordinates.loc_x+';'+player.coordinates.loc_y+']';//Location cord.
 	document.getElementById('write-place-loc').innerHTML =locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]].name;//Location name
 	document.getElementById('write-place-time').innerHTML = tim.getHours()+':'+tim.getMinutes()+':'+tim.getSeconds();//time
-	document.getElementById('inv-writer').innerHTML = 'Invetory ('+player.inventory.capacity+' доступно)';//time
+	document.getElementById('inv-writer').innerHTML = 'Inventory ('+keyslength(player.inventory.contain)+' тип(ов),'+all_item_count()+' предмет(ов))';//inventory_btn
+	document.getElementById('inv-block').innerHTML = write_items();//inventory_content
+	document.getElementById('char-block').innerHTML = write_charac();//charac_content
 
 };
+//write-charac
+function write_charac(){
+		var _item = "";
+		for (var key in player.spec) {
+			// console.log(key);
+			_item = _item+"<div id='_item'  title='bd_items[i].descp'>" + player.spec[key].name_ru +'('+player.spec[key].value+')'+"</div>";
+		}
+		return _item;
+}
+//untined-free
+function free_unt(_item){
+	if (_item == undefined){
+		return ''
+	} else{
+		return _item
+	}
+}
+//allitemscounter
+function all_item_count(){
+	var _summ = 0;
+	for (var i = 1; i <= keyslength(player.inventory.contain); i++) {
+			_summ = _summ+player.inventory.contain[i];
+	};
+	return _summ
+}
 //har-ki in html
 function point_write_html(){
 	var arr = point_writer();
@@ -38,6 +65,37 @@ function point_writer(){
 function keyslength(obj){
 		return (Object.keys(obj).length);
 };
+//hide
+function hide(_id){
+	try{
+	var _item = document.getElementById(_id);	
+	_item.style.display = "none";
+	return "Done";
+	} catch (err){
+		return "Error";
+	};
+}
+//toggle
+function toggle(_id){
+var _item = document.getElementById(_id);
+// console.log(_id+_item);
+if (_item.style.display == "block"){
+		hide(_id);
+} else {
+		show(_id);
+}
+}
+
+//show
+function show(_id){
+	try{
+	var _item =document.getElementById(_id);	
+	_item.style.display = "block";
+	return "Done";
+	} catch (err){
+		return "Error";
+	};
+}
 //keys-write-in-array
 function keyswrite(obj){
 	var arr = new Array();
@@ -62,7 +120,7 @@ function savetoLS(){
 //
 function update_sub_point(){
 	player.inventory.capacity = player.spec.const.value*2.5;
-	player.coordinates.loc_id=locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]]["id"]
+	player.coordinates.loc_id=locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]]["id"];
 }
 
 //chat

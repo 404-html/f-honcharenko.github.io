@@ -6,5 +6,7 @@ var timerID = setInterval(function(){
 		update_sub_point()
 		// point_write_html();
 		savetoLS();
+		// upd_inc()
+		upd_inv_null_check()
 	}
 }, 100)

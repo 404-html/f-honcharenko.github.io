@@ -40,3 +40,17 @@ table{
 #points-keys-writer-dis{
 	display: none;
 }
+#inv-block{
+	width: 400px;
+	height: 300px;
+	border: 2px double black ;
+	background-color: #DCDCDC;
+	display: none;
+}
+#char-block{
+	width: 400px;
+	height: 300px;
+	border: 2px double black ;
+	background-color: #DCDCDC;
+	display: none;
+}

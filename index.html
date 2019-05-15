@@ -6,11 +6,11 @@
 	<link rel="stylesheet" type="text/css" href="global.css">
 </head>
 <body>
-	<div id="main-controls ">
+	<div id="main-controls">
 		<div class="tb-wrap table">
 			<table border="2" id="tb-control">
 		   <tr>
-		    <th id="write-place-time"></th>
+		    <th id=""><small><div id="write-place-time"></div></small></th>
 		    <th><input type="button" id="control-up" value="Up" onclick="player.move_up()"></th>
 		    <th id="write-place-cord"></th><!-- Коордианты -->
 		   </tr>
@@ -33,26 +33,26 @@
 <div class="abilitys-block">
 	Навыки:
 	<ul>
-		<li><input type="button" class="chat_cleat" value="Clear chat" onclick="chat_clear()">
+		<li><input type="button" title="Очищает чат" class="chat_cleat" value="Clear chat" onclick="chat_clear()">
 		<li><input type="button" class="save_del" value="Delete save" onclick="save_del()">
-		<li><div id="inv-writer"></div>
+		<li><div id="inv-writer" onclick="toggle('inv-block')"></div><!-- Invetory -->
+				<div id="inv-block"></div>
+		<li><div id="char-writer" onclick="toggle('char-block')">Basic characteristics</div><!-- Basic characteristics -->
+				<div id="char-block"></div>
 		<li><input type="button" class="int1" value="Int +1" onclick="point_up('int',1)">
 		<li><input type="button" class="int1" value="Const +1" onclick="point_up('const',1)">
-
 	</ul>
 </div>
 	</div>
 	<div id="notific"></div>
-	
- 		<div id="points-keys-writer"></div>
- 		<div id="points-keys-writer-dis"></div>
-specifications
 <!-- *Откройте консоль для более подробной информации -->
 </body>
 	<script type="text/javascript" src="functions.js"></script>
 	<script type="text/javascript" src="main.js"></script>
 	<script type="text/javascript" src="locations.js"></script>
 	<script type="text/javascript" src="player.js"></script>
+	<script type="text/javascript" src="utilites/inventroy.js"></script>
+	<script type="text/javascript" src="items/items.js"></script>
 	<script type="text/javascript" src="update.js"></script>
 
 </html>
