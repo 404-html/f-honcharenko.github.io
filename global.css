@@ -54,3 +54,6 @@ table{
 	background-color: #DCDCDC;
 	display: none;
 }
+#inv-table{
+	font-weight: normal;
+}

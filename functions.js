@@ -9,14 +9,15 @@ function update(){
 	document.getElementById('write-place-cord').innerHTML = '['+player.coordinates.loc_x+';'+player.coordinates.loc_y+']';//Location cord.
 	document.getElementById('write-place-loc').innerHTML =locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]].name;//Location name
 	document.getElementById('write-place-time').innerHTML = tim.getHours()+':'+tim.getMinutes()+':'+tim.getSeconds();//time
-	document.getElementById('inv-writer').innerHTML = 'Inventory ('+keyslength(player.inventory.contain)+' тип(ов),'+all_item_count()+' предмет(ов))';//inventory_btn
-	document.getElementById('inv-block').innerHTML = write_items();//inventory_content
+	document.getElementById('inv-writer').innerHTML = 'Inventory ['+keyslength(player.inventory.contain)+' тип(ов),'+all_item_count()+' предмет(ов)]';//inventory_btn
 	document.getElementById('char-block').innerHTML = write_charac();//charac_content
 	// document.getElementById('loc-items-block').innerHTML = write_loc_items();//location-invetnory content
 
 };
 function update2(){
-	document.getElementById('loc-items-block').innerHTML = write_loc_items();//location-invetnory content
+	document.getElementById('loc-inv-table').innerHTML = write_loc_items();//location-invetnory content
+	document.getElementById('inv-table').innerHTML = write_items();//inventory_content
+	// write_items();
 
 };
 //write-charac
@@ -28,16 +29,42 @@ function write_charac(){
 		}
 		return _item;
 }
+
 //write items in location
 function write_loc_items(){
 		var _item = "";
-		// var _btn_get = "<input type='button' onclick='get_loc_item(1)' value='get it'";
-		var _btn_get = "<u onclick='get_loc_item(1)'>get it</u>";
-		// console.log(_btn_get);
 		for (var i in locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]].items) {	
-			_item = _item+"<div class='_item'>" + bd_items[i].name +'('+locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]].items[i]+') '+_btn_get+"</div>";}
+			// console.log(i);
+			_key=i*1;
+			// console.log(_key);
+			if (locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]].items[_key]==null) {}else{
+				var _index = locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]].items[i];
+				var _childrens = document.getElementById('loc-items-block').children;
+				// console.log(Array.prototype.indexOf.call(_childrens, this));
 
+				_item = _item +
+				"<div class='_item'><tr><th>" + 
+					bd_items[i].name +
+					'</th><th>'+_index+'</th><th>'+
+					'<input type="button" value="get it" onclick="get_loc_item(_key)"><th></tr>'+
+				"</div>";
+				// console.log(_childrens);
+				// _btn.onclick = function(){get_loc_item(i)};
+		}
+		}
+		// console.log(_item);
 		return _item;
+}
+
+function test01(_parentid='loc-items-block'){
+	var _parent = document.getElementById(_parentid).children;
+	var _parent = new Array();
+	_parent[10] = 'zerro';
+	_parent[11] = 'one';
+	_parent[12] = 'two';
+	// _parent.indexOf(11);
+	console.log(_parent.indexOf('one'));
+	return _parent;
 }
 function upd_inv_loc_null_check(){
 	for (var i in locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]].items) {
@@ -70,7 +97,7 @@ function free_unt(_item){
 //allitemscounter
 function all_item_count(){
 	var _summ = 0;
-	for (var i = 1; i <= keyslength(player.inventory.contain); i++) {
+	for (var i in player.inventory.contain) {
 			_summ = _summ+player.inventory.contain[i];
 	};
 	return _summ
@@ -162,8 +189,8 @@ function update_sub_point(){
 //chat
 function notific2(msg){
 	var tim = new Date();
-	time=tim.getHours()+':'+tim.getMinutes();
-	document.getElementById('notific').innerHTML =document.getElementById('notific').innerHTML+"<div class='msg_div_content'>"+"["+time+"] "+msg+"</div>";
+	time=tim.getHours()+':'+tim.getMinutes()+':'+tim.getSeconds();
+	document.getElementById('notific').innerHTML =document.getElementById('notific').innerHTML+"<div class='msg_div_content'>"+"<small>["+time+"]</small> "+msg+"</div>";
 	var msg2 =document.querySelectorAll('#notific .msg_div_content');//удаление свыше 30 сообщений
 	if (msg2.length>30) {
 		msg2[length].parentNode.removeChild(msg2[0]);
@@ -183,4 +210,12 @@ function save_del(msg){
 	localStorage.clear();
 	document.location.reload();
 	update_value = true;
+}
+//table-write-generator
+function write_in_table(_id,_name='name',_count='count',_go=''){
+	var _table = document.getElementById(_id);	
+	var _row ="<th>"+_name+'</th><th>'+_count+'</th><th>'+_go+"</th>";
+	// _table.appendChild(content);
+	_table.innerHTML += _row; 
+	return _row;
 }

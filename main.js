@@ -12,13 +12,13 @@ try {
 				id: 1,
 				name_ru: "Телосложение",
 				name_en: "Constitution",
-				value: 0
+				value: 1
 			},
 			int:{
 				id: 2,
 				name_ru: "Интеллект",
 				name_en: "intelect",
-				value: 0
+				value: 1
 			},
 		},
 		inventory:{

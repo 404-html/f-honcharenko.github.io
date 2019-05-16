@@ -14,4 +14,11 @@ var timerID = setInterval(function(){
 }, 100)
 //Update for buttons
 var timerID2 = setInterval(function(){
-			update2()}, 200)
+	if (update_value=true) {
+		update2()
+	}
+}, 200)
+function upd_control(){
+	if (update_value==true) {update_value=false}else{update_value=true};
+	return update_value;
+}

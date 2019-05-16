@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Непойми что</title>
+	<title>Не пойми что</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="global.css">
 </head>
@@ -36,19 +36,28 @@
 		<li><input type="button" title="Очищает чат" class="chat_cleat" value="Clear chat" onclick="chat_clear()">
 		<li><input type="button" class="save_del" value="Delete save" onclick="save_del()">
 		<li><div id="inv-writer" onclick="toggle('inv-block')"></div><!-- Invetory -->
-				<div id="inv-block"></div>
+				<div id="inv-block">
+					<table id="inv-table" border="0"></table>
+				</div>
 		<li><div id="char-writer" onclick="toggle('char-block')">Basic characteristics</div><!-- Basic characteristics -->
 				<div id="char-block"></div>
 		<li><input type="button" class="int1" value="Int +1" onclick="point_up('int',1)">
 		<li><input type="button" class="int1" value="Const +1" onclick="point_up('const',1)">
 	</ul>
 	Items in location:
-				<div id="loc-items-block"></div>
+				<div id="loc-items-block">
+					<table id="loc-inv-table" border="0">
+					</table>
+				</div>
 
 	<ul>
 </div>
 	</div>
 	<div id="notific"></div>
+
+	<table id="testable" border="1">
+						<!-- <tr = id="testable-tr"><th>name</th><th>count</th><th>go</th></tr> -->
+	</table>
 <!-- *Откройте консоль для более подробной информации -->
 </body>
 	<script type="text/javascript" src="functions.js"></script>
@@ -56,6 +65,7 @@
 	<script type="text/javascript" src="locations.js"></script>
 	<script type="text/javascript" src="player.js"></script>
 	<script type="text/javascript" src="utilites/inventroy.js"></script>
+	<script type="text/javascript" src="utilites/randomitensgenerator.js"></script>
 	<script type="text/javascript" src="items/items.js"></script>
 	<script type="text/javascript" src="update.js"></script>
 
