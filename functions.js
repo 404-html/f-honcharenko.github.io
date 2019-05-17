@@ -25,7 +25,7 @@ function write_charac(){
 		var _item = "";
 		for (var key in player.spec) {
 			// console.log(key);
-			_item = _item+"<div id='_item'  title='bd_items[i].descp'>" + player.spec[key].name_ru +'('+player.spec[key].value+')'+"</div>";
+			_item = _item+"<div id='_item'>" + player.spec[key].name_ru +'('+player.spec[key].value+')'+"</div>";
 		}
 		return _item;
 }
@@ -34,19 +34,15 @@ function write_charac(){
 function write_loc_items(){
 		var _item = "";
 		for (var i in locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]].items) {	
-			// console.log(i);
-			_key=i*1;
-			// console.log(_key);
-			if (locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]].items[_key]==null) {}else{
 				var _index = locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]].items[i];
-				var _childrens = document.getElementById('loc-items-block').children;
-				// console.log(Array.prototype.indexOf.call(_childrens, this));
-
-				_item = _item +
+			_key=i*1
+			if (locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]].items[_key]==null) {}else{
+				var a = locations[[player.coordinates.loc_x]+':'+[player.coordinates.loc_y]].items[_key];
+								_item = _item +
 				"<div class='_item'><tr><th>" + 
 					bd_items[i].name +
 					'</th><th>'+_index+'</th><th>'+
-					'<input type="button" value="get it" onclick="get_loc_item(_key)"><th></tr>'+
+					'<input type="button" value="get" onclick="get_loc_item(_key)"></th><th><input type="button" value="get all" onclick="get_loc_item(_key,a)"></th></tr>'+
 				"</div>";
 				// console.log(_childrens);
 				// _btn.onclick = function(){get_loc_item(i)};
@@ -56,15 +52,17 @@ function write_loc_items(){
 		return _item;
 }
 
-function test01(_parentid='loc-items-block'){
-	var _parent = document.getElementById(_parentid).children;
-	var _parent = new Array();
-	_parent[10] = 'zerro';
-	_parent[11] = 'one';
-	_parent[12] = 'two';
-	// _parent.indexOf(11);
-	console.log(_parent.indexOf('one'));
-	return _parent;
+function test01(_parent='parent',_child=this){
+	var _parent1 = document.getElementById(_parent).children;
+	var __child1 = document.getElementById(_child).children;
+	console.log(_parent1+' - '+_child1.length);
+	var _index;
+	for (var i in _parent1) {
+		if (_parent1[i]==_child1) {_index=i} else{_index=null}
+	}
+
+	console.log(_index);
+	return _index;
 }
 function upd_inv_loc_null_check(){
 	for (var i in locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]].items) {
@@ -180,12 +178,42 @@ function point_up(id, number){
 function savetoLS(){
 	localStorage['player'] = JSON.stringify(player);
 };
-//
+//sub_update
 function update_sub_point(){
 	player.inventory.capacity = player.spec.const.value*2.5;
+	player.points.HP_max=player.spec.const.value*10;
+	player.points.MP_max=player.spec.int.value*10;
 	player.coordinates.loc_id=locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]]["id"];
 }
-
+//update points
+function upd_ponts(){
+	var _hp = document.getElementById('hp_content');
+	var _mp = document.getElementById('mp_content');
+	var _hp_n = document.getElementById('hp_content_n');
+	var _mp_n = document.getElementById('mp_content_n');
+	_hp_n.innerHTML=player.points.HP_now+"/"+player.points.HP_max; 
+	_mp_n.innerHTML=player.points.MP_now+"/"+player.points.MP_max; 
+	var _widrh = (player.points.HP_now*100)/player.points.HP_max;
+	var _widrh2 = (player.points.MP_now*100)/player.points.MP_max;
+	// console.log( _widrh);
+	_hp.style.width = _widrh+'%';
+	_mp.style.width = _widrh2+'%';
+}
+function regen(){
+	var _hp_regen = player.spec.const.value*0.1+1;
+	var _regen_timer = setInterval(function(){
+		if (player.points.HP_now<player.points.HP_max) {
+			player.points.HP_now+=Math.floor(_hp_regen);
+		}
+}, 1000)
+		var _mp_regen = player.spec.int.value*0.1+1;
+	var _regen_timer = setInterval(function(){
+		if (player.points.MP_now<player.points.MP_max) {
+			player.points.MP_now+=Math.floor(_mp_regen);
+		}
+}, 1000)
+return _hp_regen+':'+_mp_regen;
+}
 //chat
 function notific2(msg){
 	var tim = new Date();

@@ -7,6 +7,8 @@ var timerID = setInterval(function(){
 		update_sub_point();
 		upd_inv_null_check();
 		savetoLS();
+		upd_ponts();
+		// regen()
 		// point_write_html();
 		// upd_inc()
 
@@ -22,3 +24,5 @@ function upd_control(){
 	if (update_value==true) {update_value=false}else{update_value=true};
 	return update_value;
 }
+// player.points.HP_now=player.points.HP_max;
+regen();

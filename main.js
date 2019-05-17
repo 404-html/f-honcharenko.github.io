@@ -7,6 +7,12 @@ try {
 	// notifc2("	С: Сохарение успешно загружено");
 } catch(e){
 	var player = {
+		points:{
+			HP_max:10,
+			HP_now:10,
+			MP_max:10,
+			MP_now:10
+		},
 		spec:{
 			const:{
 				id: 1,
@@ -25,7 +31,7 @@ try {
 				name_ru: "Инвентарь",
 				name_en: "Inventory",
 				contain: {},
-				capacity:  0
+				capacity:  0 
 			},
     coordinates:{
         loc_x: 5,
@@ -36,7 +42,7 @@ try {
     }
 };
 var locations = {};
-
+player.points.HP_now = player.points.HP_max;
 
 	console.log("	С: Сохарение не найдено. Сгенерированны базовые значения координат.");
 	notific2("	С: Сохарение не найдено. Сгенерированны базовые значения координат.");
