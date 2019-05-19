@@ -146,4 +146,8 @@ th{
 #hp_content_n, #mp_content_n{
 	float: right;
 }
+th{
+	text-align:left;
+	font-weight: normal;
+}
 /*new_html_end*/

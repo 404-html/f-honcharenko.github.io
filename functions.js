@@ -140,7 +140,7 @@ function hide(_id){
 function toggle(_id){
 var _item = document.getElementById(_id);
 // console.log(_id+_item);
-console.log(_item);
+// console.log(_item);
 if (_item.style.display == "block"){
 		hide(_id);
 } else {
