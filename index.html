@@ -6,22 +6,23 @@
 	<link rel="stylesheet" type="text/css" href="global.css">
 </head>
 <body>
+	<a href="index_new.html">new html version</a>
 	<div id="main-controls">
 		<div class="tb-wrap table">
-			<table border="2" id="tb-control">
+			<table border="0" id="tb-control">
 		   <tr>
 		    <th id=""><small><div id="write-place-time"></div></small></th>
-		    <th><input type="button" id="control-up" value="Up" onclick="player.move_up()"></th>
+		    <th><input type="button" class="control_btn" id="control-up" value="Up" onclick="player.move_up()"></th>
 		    <th id="write-place-cord"></th><!-- Коордианты -->
 		   </tr>
 		      <tr>
-		    <th><input type="button" id="control-left" value="Left" onclick="player.move_left()"></th>
+		    <th><input type="button" class="control_btn" id="control-left" value="Left" onclick="player.move_left()"></th>
 		    <th id="display-loc">Локация: <div id="write-place-loc"></div></th>
-		    <th><input type="button" id="control-right" value="Right" onclick="player.move_right()"></th>
+		    <th><input type="button" class="control_btn" id="control-right" value="Right" onclick="player.move_right()"></th>
 		   </tr>
 		      <tr>
 		    <th></th>
-		    <th><input type="button" id="control-down" value="Down" onclick="player.move_down()"></th>
+		    <th><input type="button" class="control_btn" id="control-down" value="Down" onclick="player.move_down()"></th>
 		    <th></th>
 		   </tr>
 		   <tr>

@@ -17,7 +17,7 @@ var timerID = setInterval(function(){
 //Update for buttons
 var timerID2 = setInterval(function(){
 	if (update_value=true) {
-		update2()
+		update2();
 	}
 }, 200)
 function upd_control(){
@@ -25,4 +25,23 @@ function upd_control(){
 	return update_value;
 }
 // player.points.HP_now=player.points.HP_max;
-regen();
+// regen();
+
+
+function regen(_chose='hp'){
+	var _hp_regen = player.spec.const.value*0.1+1;
+		if (player.points.HP_now<player.points.HP_max) {
+			player.points.HP_now+=Math.floor(_hp_regen);
+		}
+		var _mp_regen = player.spec.int.value*0.1+1;
+		if (player.points.MP_now<player.points.MP_max) {
+			player.points.MP_now+=Math.floor(_mp_regen);
+		}
+	if (_chose=='hp') {return _hp_regen}
+	if (_chose=='mp') {return _mp_regen}
+}
+var timerID3 = setInterval(function(){
+	if (update_value=true) {
+		regen();
+	}
+}, 1000)

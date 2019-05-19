@@ -1,10 +1,15 @@
 *{
 	font-family: arial;
 }
-table{
-	/*height: 245px;*/
-	/*margin: 10px;*/
-	/*width: */
+body{
+
+	margin:0;
+	padding: 0;
+}
+#profile{
+	width: 100%;
+	height: 100px;
+	/*background-color: green;*/
 }
 #display-loc{
 		width:150px;
@@ -12,7 +17,11 @@ table{
 	}
 .othe-controls, .tb-wrap, #tb-abilitys{
 	display: inline-block;
-	height: 245px;
+	height: 100%;
+}
+#tb-control{
+	width: 100%;
+	height: 260px;
 }
 .othe-controls{
 	width: 100px;
@@ -22,10 +31,10 @@ table{
 	margin-left:30px;
 }
 #notific{
-	width: 400px;
-	height: 300px;
-	border: 2px double black ;
-	background-color: gray;
+	width: 100%;
+	height: 260px;
+	border:0px double black ;
+	background-color: #DCDCDC;
 	overflow-y: auto;
 	word-wrap: break-word;
 }
@@ -41,33 +50,34 @@ table{
 	display: none;
 }
 #inv-block{
-	width: 400px;
-	height: 300px;
-	border: 2px double black ;
-	background-color: #DCDCDC;
-	display: none;
+	width: 100%;
+	height: 260px;
+	/*border: 2px double black ;*/
+	/*background-color: #DCDCDC;*/
+	/*display: none;*/
 }
 #char-block{
-	width: 400px;
-	height: 300px;
-	border: 2px double black ;
-	background-color: #DCDCDC;
-	display: none;
+	width: 100%;
+	height: 260px;
+	/*border: 2px double black ;*/
+	/*background-color: #DCDCDC;*/
+	/*display: none;*/
+	word-wrap: auto;
 }
 #inv-table{
 	font-weight: normal;
 }
 #main-block-points{
-	width: 200px;
-	height: 50px;
-	border: 1px double black ;
-	background-color: white;
+	width: 100%;
+	/*height: 50px;*/
+	/*border: 1px double black ;*/
+	/*background-color: white;*/
 	/*display: none;*/
 		padding: 10px;
 }
 #hp_border{
 	border: 1px solid black;
-	width:180px;
+	width:200px;
 	height: auto;
 	margin:5px;
 }
@@ -86,7 +96,54 @@ table{
 
 #mp_border{
 	border: 1px solid black;
-	width:180px;
+	width:200px;
 	height: auto;
 	margin:5px;
 }
+.tooltip{
+	width: 100px;
+	height: 100px;
+	/*background-color: red;*/
+}
+.control_btn{
+	width: 100%;
+	height: 100%;
+}
+th{
+	padding: 0;
+}
+
+/*new_html*/
+#main_wrapper{
+	display: flex;
+	width: 100%;
+	height: 500px;
+}
+.flex_content{
+	flex:6;
+	/*background-color: blue;*/
+}
+
+.flex_void{
+	flex: 1;
+	/*background-color: gray;*/
+}
+.first_row, .second_row, .three_row{
+	justify-content: center;
+	display: flex;
+	flex-wrap: nowrap;
+}
+.second_row{
+	/*background-color: red;*/
+}
+.column{
+
+	border: 1px solid black;
+	display: felx;
+	flex:1;
+	/*justify-content: space-around;*/
+}
+#hp_content_n, #mp_content_n{
+	float: right;
+}
+/*new_html_end*/

@@ -9,7 +9,7 @@ function update(){
 	document.getElementById('write-place-cord').innerHTML = '['+player.coordinates.loc_x+';'+player.coordinates.loc_y+']';//Location cord.
 	document.getElementById('write-place-loc').innerHTML =locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]].name;//Location name
 	document.getElementById('write-place-time').innerHTML = tim.getHours()+':'+tim.getMinutes()+':'+tim.getSeconds();//time
-	document.getElementById('inv-writer').innerHTML = 'Inventory ['+keyslength(player.inventory.contain)+' тип(ов),'+all_item_count()+' предмет(ов)]';//inventory_btn
+	// document.getElementById('inv-writer').innerHTML = 'Inventory ['+keyslength(player.inventory.contain)+' тип(ов),'+all_item_count()+' предмет(ов)]';//inventory_btn
 	document.getElementById('char-block').innerHTML = write_charac();//charac_content
 	// document.getElementById('loc-items-block').innerHTML = write_loc_items();//location-invetnory content
 
@@ -32,7 +32,7 @@ function write_charac(){
 
 //write items in location
 function write_loc_items(){
-		var _item = "";
+		var _item = "<tr><th>Name:</th><th>Count:</th></tr>";
 		for (var i in locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]].items) {	
 				var _index = locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]].items[i];
 			_key=i*1
@@ -140,6 +140,7 @@ function hide(_id){
 function toggle(_id){
 var _item = document.getElementById(_id);
 // console.log(_id+_item);
+console.log(_item);
 if (_item.style.display == "block"){
 		hide(_id);
 } else {
@@ -184,6 +185,34 @@ function update_sub_point(){
 	player.points.HP_max=player.spec.const.value*10;
 	player.points.MP_max=player.spec.int.value*10;
 	player.coordinates.loc_id=locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]]["id"];
+}//
+// function mp(){
+// 	return player.points.HP_now;
+// }
+// function mp_max(){
+// 	return player.points.HP_max;
+// }
+// function hp(){
+// 	return player.points.MP_max;
+// }
+// function hp_max(){
+// 	return player.points.HP_now;
+// }
+function mp_edit(_count){
+	var mp = player.points.MP_now;
+	var mp_max = player.points.MP_max;;
+	console.log(mp);
+	console.log(_count);
+	if (mp+(_count*1)>mp_max) {player.points.MP_now=mp_max}
+	if (mp+(_count*1)<0) {notific2('Недостаточно манны.');}
+	if ((mp+(_count*1)>0)&&(mp+(_count*1)<mp_max+1)) {player.points.MP_now+=_count*1;}
+	// player.points.MP_now=player.points.MP_now*1+1*_count;
+	return player.pointsMP_now;
+}
+
+function hp_edit(_count){
+	player.points.HP_now=player.points.HP_now*1+1*_count;;
+	return player.points.HP_now;
 }
 //update points
 function upd_ponts(){
@@ -199,21 +228,23 @@ function upd_ponts(){
 	_hp.style.width = _widrh+'%';
 	_mp.style.width = _widrh2+'%';
 }
-function regen(){
-	var _hp_regen = player.spec.const.value*0.1+1;
-	var _regen_timer = setInterval(function(){
-		if (player.points.HP_now<player.points.HP_max) {
-			player.points.HP_now+=Math.floor(_hp_regen);
-		}
-}, 1000)
-		var _mp_regen = player.spec.int.value*0.1+1;
-	var _regen_timer = setInterval(function(){
-		if (player.points.MP_now<player.points.MP_max) {
-			player.points.MP_now+=Math.floor(_mp_regen);
-		}
-}, 1000)
-return _hp_regen+':'+_mp_regen;
-}
+// function regen(_chose='hp'){
+// 	var _hp_regen = player.spec.const.value*0.1+1;
+// 	var _regen_timer = setInterval(function(){
+// 		if (player.points.HP_now<player.points.HP_max) {
+// 			player.points.HP_now+=Math.floor(_hp_regen);
+// 		}
+// }, 1000)
+// 		var _mp_regen = player.spec.int.value*0.1+1;
+// 	var _regen_timer = setInterval(function(){
+// 		if (player.points.MP_now<player.points.MP_max) {
+// 			player.points.MP_now+=Math.floor(_mp_regen);
+// 		}
+// }, 1000)
+// 	if (_chose=='hp') {return _hp_regen}
+// 		if (_chose=='mp') {return _mp_regen}
+// // return _hp_regen+':'+_mp_regen;
+// }
 //chat
 function notific2(msg){
 	var tim = new Date();
@@ -246,4 +277,18 @@ function write_in_table(_id,_name='name',_count='count',_go=''){
 	// _table.appendChild(content);
 	_table.innerHTML += _row; 
 	return _row;
+}
+//Подсказка, не доделана.
+function tooltipfunc(_id='write-place-not'){
+	var _target =document.getElementById(_id);
+	var _cords = _target.getBoundingClientRect();
+	var _left = _cords.left;//left
+	var _top = _cords.top;//top
+	var _tooltip = document.createElement('div');
+	_tooltip.innerHTML = _tooltip;
+	_tooltip.className = 'tooltip';
+	_tooltip.style.top = _top+'px';
+	_tooltip.style.left = _left+'px';
+	document.body.appendChild(_tooltip);//Добавить елемент нас страницу
+	return _left+' '+_top;
 }

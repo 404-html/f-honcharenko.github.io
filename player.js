@@ -17,10 +17,15 @@ player.tp = function(loc_x,loc_y){
 			console.log("	C: Ошибка. Пивышен лимитер.");
 		}
 	}
-//Верх
-player.move_up = function(){
+//
+player.move = function(_direction){
+	console.log(player.points.MP_now);
+	if (player.points.MP_now>3) {
+		switch (_direction){
+			case 'up':
 	try{
-		if (this.coordinates.loc_x+1>loc_limiter_e) {throw Error}
+		mp_edit(-3);
+		if (player.coordinates.loc_x+1>loc_limiter_e) {throw Error}
 		this.coordinates.loc_x = this.coordinates.loc_x + 1;		
 		notific2("Вы поднялись на 1 клетку.");
 		console.log("Вы поднялись на 1 клетку.");
@@ -28,12 +33,11 @@ player.move_up = function(){
 	 catch(e){
 	 	notific2("Ошибка. Привышен лимитер.");
 		console.log("	C:Ошибка. Привышен лимитер.")
-	}
-}
-
-//Вниз
-player.move_down = function(){
-	try{
+	}			
+			break;
+			case 'down':
+				try{
+		mp_edit(-3);
 		if (this.coordinates.loc_x<loc_limiter_s) {throw Error}
 		this.coordinates.loc_x = this.coordinates.loc_x - 1;		
 		notific2("Вы спустились на 1 клетку.");
@@ -43,11 +47,10 @@ player.move_down = function(){
 	 	notific2("Ошибка. Привышен лимитер.");
 		console.log("	C:Ошибка. Привышен лимитер.")
 	}
-}
-
-//Право
-player.move_right = function(){
+			break;
+			case 'right':
 	try{
+		mp_edit(-3);
 		if (this.coordinates.loc_y+1>loc_limiter_e) {throw Error}
 		this.coordinates.loc_y = this.coordinates.loc_y + 1;		
 		notific2("Вы перешли на 1 вправо.");
@@ -57,11 +60,10 @@ player.move_right = function(){
 	 	notific2("Ошибка. Привышен лимитер.");
 		console.log("	C:Ошибка. Привышен лимитер.")
 	}
-}
-
-//Вниз
-player.move_left = function(){
-	try{
+			break;
+			case 'left':
+				try{
+		mp_edit(-3);
 		if (this.coordinates.loc_y<loc_limiter_s) {throw Error}
 		this.coordinates.loc_y = this.coordinates.loc_y - 1;		
 		notific2("Вы перешли на 1 влево.");
@@ -70,5 +72,10 @@ player.move_left = function(){
 	 catch(e){
 	 	notific2("Ошибка. Привышен лимитер.");
 		console.log("	C:Ошибка. Привышен лимитер.")
+	}
+			break;
+		}
+	} else {
+		notific2('Недостаточно манны для этого действия');
 	}
 }

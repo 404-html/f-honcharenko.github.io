@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Не пойми что</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="global.css">
+</head>
+<body>
+	<div id="main_wrapper">
+		<div class="flex_void"></div>
+		<div class="flex_content">
+			<div class="first_row">
+					<div class="first_column column">
+<b>Второстепенные хар-аки:</b>
+<div id="notbase_point">
+	<ul>
+		<li>HP regen: </li>
+		<li>MP regen: </li>
+	</ul>
+</div>
+					</div>
+					<div class="second_column column">
+<div id="profile">
+	<b>Стаус:</b>
+	<div id="main-block-points">
+	
+	<div id="hp_border">
+		<div id="hp_content">HP:<div id='hp_content_n' ></div></div>
+	</div>
+		
+		<div id="mp_border">
+		<div id="mp_content">MP:<div id='mp_content_n' ></div></div>
+	</div>
+</div>
+
+</div>
+
+					</div>
+					<div class="three_column column">13_ </div>
+			</div>
+			<div class="second_row">
+				<div class="first_column column">
+<!-- Чат -->
+<!-- Начало -->
+	<div id="notific"></div>
+<!-- Чат -->
+<!-- Конец -->
+				</div>
+					<div class="second_column column">
+<table border="0" id="tb-control">
+		   <tr>
+		    <th id=""><small><div id="write-place-time"></div></small></th>
+		    <th><input type="button" class="control_btn" id="control-up" value="Up" onclick="player.move('up')"></th>
+		    <th id="write-place-cord"></th><!-- Коордианты -->
+		   </tr>
+		      <tr>
+		    <th><input type="button" class="control_btn" id="control-left" value="Left" onclick="player.move('left')"></th>
+		    <th id="display-loc">Локация: <div id="write-place-loc"></div></th>
+		    <th><input type="button" class="control_btn" id="control-right" value="Right" onclick="player.move('right')"></th>
+		   </tr>
+		      <tr>
+		    <th></th>
+		    <th><input type="button" class="control_btn" id="control-down" value="Down" onclick="player.move('down')"></th>
+		    <th></th>
+		   </tr>
+		   <tr>
+		   	<th id="write-place-not" colspan="3"> </th>
+		   </tr>
+		 </table>
+					</div>
+					<div class="three_column column">
+<b>Системные навыки:</b>
+<ul>
+		<li><input type="button" title="Очищает чат" class="chat_cleat" value="Clear chat" onclick="chat_clear()">
+		<li><input type="button" class="save_del" value="Delete save" onclick="save_del()">
+</ul>
+					</div>
+			</div>
+			<div class="three_row">
+				<div class="first_column column">
+
+<div id="inv-text" style="display:block">Инвентарь персонажа</div>
+<div id="inv-loc-text" style="display:none">Инвентарь локации</div>
+<input type="button" value="change" name=""  onclick="toggle('inv-text'),toggle('inv-block'),toggle('inv-loc-text'),toggle('loc-items-block')">
+				<div id="inv-block" style="display: block">
+					<table id="inv-table" border="0"></table>
+				</div>
+				<div id="loc-items-block" style="display: none">
+					<table id="loc-inv-table" border="0">
+					</table>
+				</div>
+
+				</div>
+					<div class="second_column column">
+					<b>	Характеристики:</b>
+<div id="char-block"></div>
+					</div>
+					<div class="three_column column">
+<b>Игровые навыки:</b>
+<ul>
+
+		<li><input type="button" class="int1" value="Int +1" onclick="point_up('int',1)">
+		<li><input type="button" class="int1" value="Const +1" onclick="point_up('const',1)">
+</ul>
+					</div>
+			</div>
+
+		</div>
+		<div class="flex_void"></div>
+	</div>
+</body>
+	<script type="text/javascript" src="functions.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+	<script type="text/javascript" src="locations.js"></script>
+	<script type="text/javascript" src="player.js"></script>
+	<script type="text/javascript" src="utilites/inventroy.js"></script>
+	<script type="text/javascript" src="utilites/randomitensgenerator.js"></script>
+	<script type="text/javascript" src="items/items.js"></script>
+	<script type="text/javascript" src="update.js"></script>
+
+</html>
