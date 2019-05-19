@@ -30,13 +30,13 @@ function upd_control(){
 
 function regen(_chose='hp'){
 	var _hp_regen = player.spec.const.value*0.1+1;
-		if (player.points.HP_now<player.points.HP_max) {
+		if (player.points.HP_now+_hp_regen<player.points.HP_max) {
 			player.points.HP_now+=Math.floor(_hp_regen);
-		}
+		} else {player.points.HP_now=player.points.HP_max}
 		var _mp_regen = player.spec.int.value*0.1+1;
-		if (player.points.MP_now<player.points.MP_max) {
-			player.points.MP_now+=Math.floor(_mp_regen);
-		}
+		if (player.points.MP_now+_mp_regen<player.points.MP_max) {
+			mp_edit(Math.floor(_mp_regen));
+		}else {player.points.MP_now=player.points.MP_max}
 	if (_chose=='hp') {return _hp_regen}
 	if (_chose=='mp') {return _mp_regen}
 }
