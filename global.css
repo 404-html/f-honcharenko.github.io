@@ -38,6 +38,9 @@ body{
 	overflow-y: auto;
 	word-wrap: break-word;
 }
+.inline{
+	display: inline;
+}
 #points-keys-writer{
 	width: 200px;
 	height: 100px;

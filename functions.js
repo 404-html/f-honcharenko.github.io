@@ -11,6 +11,8 @@ function update(){
 	document.getElementById('write-place-time').innerHTML = tim.getHours()+':'+tim.getMinutes()+':'+tim.getSeconds();//time
 	// document.getElementById('inv-writer').innerHTML = 'Inventory ['+keyslength(player.inventory.contain)+' тип(ов),'+all_item_count()+' предмет(ов)]';//inventory_btn
 	document.getElementById('char-block').innerHTML = write_charac();//charac_content
+	document.getElementById('hp_regen_content').innerHTML = regen_('hp');
+	document.getElementById('mp_regen_content').innerHTML = regen_('mp');
 	// document.getElementById('loc-items-block').innerHTML = write_loc_items();//location-invetnory content
 
 };
@@ -228,23 +230,12 @@ function upd_ponts(){
 	_hp.style.width = _widrh+'%';
 	_mp.style.width = _widrh2+'%';
 }
-// function regen(_chose='hp'){
-// 	var _hp_regen = player.spec.const.value*0.1+1;
-// 	var _regen_timer = setInterval(function(){
-// 		if (player.points.HP_now<player.points.HP_max) {
-// 			player.points.HP_now+=Math.floor(_hp_regen);
-// 		}
-// }, 1000)
-// 		var _mp_regen = player.spec.int.value*0.1+1;
-// 	var _regen_timer = setInterval(function(){
-// 		if (player.points.MP_now<player.points.MP_max) {
-// 			player.points.MP_now+=Math.floor(_mp_regen);
-// 		}
-// }, 1000)
-// 	if (_chose=='hp') {return _hp_regen}
-// 		if (_chose=='mp') {return _mp_regen}
-// // return _hp_regen+':'+_mp_regen;
-// }
+function regen_(_chose='hp'){
+	var _hp_regen = Math.floor(player.spec.const.value*0.1+1);
+	var _mp_regen = Math.floor(player.spec.int.value*0.1+1);
+	if (_chose=='hp') {return _hp_regen}
+		if (_chose=='mp') {return _mp_regen}
+}
 //chat
 function notific2(msg){
 	var tim = new Date();
