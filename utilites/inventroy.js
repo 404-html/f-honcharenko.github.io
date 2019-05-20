@@ -24,10 +24,10 @@ function inv_del(_id,_){
 }
 
 function write_items(){
-		var _item = "<tr><th>Name:</th><th>Count:</th></tr>";
+		var _item = "<tr><th>Name:</th><th>Count:</th><th>describe:</th><th>func:</th></tr>";
 		for (var i in player.inventory.contain) {
 			_i=i*1;
-			_item = _item+"<div id='_item'><tr><th>" + bd_items[i].name +"</th><th>"+player.inventory.contain[i]+"</th><th><i>"+bd_items[i].descp+"</i></th><th><input type='button' value='use it' onclick='console.log(_i)'></th></tr></div>";
+			_item = _item+"<div id='_item'><tr><th>" + bd_items[i].name +"</th><th>"+player.inventory.contain[i]+"</th><th><i>"+bd_items[i].descp+"</i></th><th><input type='button' value='use it' onclick='use_food(_i)'></th></tr></div>";
 			// _item = write_in_table('inv-table',bd_items[i].name,player.inventory.contain[i],i);
 		}
 		return _item;

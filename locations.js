@@ -51,3 +51,26 @@ function loc_itm_add(_id,_count=1,_x=player.coordinates.loc_x,_y=player.coordina
 	} else {console.log('Предмет не существует');}
 	return ;
 }
+function use_food(_id) {
+	// console.log(_id);
+	// console.log(player.inventory.contain[_id]);
+
+	if (player.inventory.contain[_id]==null) {} else
+	{
+		switch (bd_items[_id].effect.point){
+		case 'HP':
+		// console.log('hp');
+		player.inventory.contain[_id]=player.inventory.contain[_id]-1;
+		hp_edit(bd_items[_id].effect.count)
+		notific2('Вы использовали '+bd_items[_id].name+', и восстановили '+bd_items[_id].effect.count+' ед. '+bd_items[_id].effect.point);
+		break;
+		case 'MP':
+		// console.log('mp');
+		player.inventory.contain[_id]=player.inventory.contain[_id]-1;
+		mp_edit(bd_items[_id].effect.count)
+		notific2('Вы использовали '+bd_items[_id].name+', и восстановили '+bd_items[_id].effect.count+' ед. '+bd_items[_id].effect.point);
+
+		break;}
+	}
+}
+

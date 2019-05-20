@@ -24,9 +24,9 @@ player.move = function(_direction){
 		switch (_direction){
 			case 'up':
 	try{
-		mp_edit(-3);
 		if (player.coordinates.loc_x+1>loc_limiter_e) {throw Error}
 		this.coordinates.loc_x = this.coordinates.loc_x + 1;		
+		mp_edit(-3);
 		notific2("Вы поднялись на 1 клетку.");
 		console.log("Вы поднялись на 1 клетку.");
 	}
@@ -37,8 +37,8 @@ player.move = function(_direction){
 			break;
 			case 'down':
 				try{
-		mp_edit(-3);
 		if (this.coordinates.loc_x<loc_limiter_s) {throw Error}
+		mp_edit(-3);
 		this.coordinates.loc_x = this.coordinates.loc_x - 1;		
 		notific2("Вы спустились на 1 клетку.");
 		console.log("Вы спустились на 1 кетку.");
@@ -50,8 +50,8 @@ player.move = function(_direction){
 			break;
 			case 'right':
 	try{
-		mp_edit(-3);
 		if (this.coordinates.loc_y+1>loc_limiter_e) {throw Error}
+		mp_edit(-3);
 		this.coordinates.loc_y = this.coordinates.loc_y + 1;		
 		notific2("Вы перешли на 1 вправо.");
 		console.log("Вы перешли на 1 вправо.");
@@ -63,8 +63,8 @@ player.move = function(_direction){
 			break;
 			case 'left':
 				try{
-		mp_edit(-3);
 		if (this.coordinates.loc_y<loc_limiter_s) {throw Error}
+		mp_edit(-3);
 		this.coordinates.loc_y = this.coordinates.loc_y - 1;		
 		notific2("Вы перешли на 1 влево.");
 		console.log("Вы перешли на 1 влево.");

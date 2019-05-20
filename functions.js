@@ -31,7 +31,12 @@ function write_charac(){
 		}
 		return _item;
 }
-
+//get all items;
+function get_loc_items_all(_id){
+	var _temp = locations[[player.coordinates.loc_x]+":"+[player.coordinates.loc_y]].items[_id];
+	get_loc_item(_id,_temp);
+	return _temp;
+};
 //write items in location
 function write_loc_items(){
 		var _item = "<tr><th>Name:</th><th>Count:</th></tr>";
@@ -43,8 +48,8 @@ function write_loc_items(){
 								_item = _item +
 				"<div class='_item'><tr><th>" + 
 					bd_items[i].name +
-					'</th><th>'+_index+'</th><th>'+
-					'<input type="button" value="get" onclick="get_loc_item(_key)"></th><th><input type="button" value="get all" onclick="get_loc_item(_key,a)"></th></tr>'+
+					'</th><th>'+_index+'</th><th>'+i+
+					'<input type="button" id="fuck_btn" value="get" onclick="get_loc_item(_key)"></th><th><input type="button" value="get all" onclick="get_loc_items_all(_key)"></th></tr>'+
 				"</div>";
 				// console.log(_childrens);
 				// _btn.onclick = function(){get_loc_item(i)};
@@ -53,6 +58,7 @@ function write_loc_items(){
 		// console.log(_item);
 		return _item;
 }
+
 
 function test01(_parent='parent',_child=this){
 	var _parent1 = document.getElementById(_parent).children;
@@ -203,17 +209,25 @@ function update_sub_point(){
 function mp_edit(_count){
 	var mp = player.points.MP_now;
 	var mp_max = player.points.MP_max;;
-	console.log(mp);
-	console.log(_count);
+	// console.log(mp);
+	// console.log(_count);
 	if (mp+(_count*1)>mp_max) {player.points.MP_now=mp_max}
 	if (mp+(_count*1)<0) {notific2('Недостаточно манны.');}
 	if ((mp+(_count*1)>0)&&(mp+(_count*1)<mp_max+1)) {player.points.MP_now+=_count*1;}
 	// player.points.MP_now=player.points.MP_now*1+1*_count;
-	return player.pointsMP_now;
+	return player.points.MP_now;
 }
 
 function hp_edit(_count){
-	player.points.HP_now=player.points.HP_now*1+1*_count;;
+	console.log('НЕМЕДЛЕННО ПЕРЕДЛАЙ ЄТУ ФУНКЦИЮ');
+	var hp = player.points.HP_now;
+	var hp_max = player.points.HP_max;;
+	// console.log(mp);
+	// console.log(_count);
+	if (hp+(_count*1)>hp_max) {player.points.MP_now=mp_max}
+	if (hp+(_count*1)<0) {notific2('Недостаточно здоровья.');}
+	if ((hp+(_count*1)>0)&&(hp+(_count*1)<hp_max+1)) {player.points.HP_now+=_count*1;}
+	// player.points.MP_now=player.points.MP_now*1+1*_count;
 	return player.points.HP_now;
 }
 //update points
