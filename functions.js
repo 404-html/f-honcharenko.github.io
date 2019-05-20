@@ -49,7 +49,7 @@ function write_loc_items(){
 				"<div class='_item'><tr><th>" + 
 					bd_items[i].name +
 					'</th><th>'+_index+'</th><th>'+i+
-					'<input type="button" id="fuck_btn" value="get" onclick="get_loc_item(_key)"></th><th><input type="button" value="get all" onclick="get_loc_items_all(_key)"></th></tr>'+
+					'<input type="button" id="butterfly_btn" value="get" onclick="get_loc_item(_key)"></th><th><input type="button" value="get all" onclick="get_loc_items_all(_key)"></th></tr>'+
 				"</div>";
 				// console.log(_childrens);
 				// _btn.onclick = function(){get_loc_item(i)};
